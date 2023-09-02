@@ -22,12 +22,16 @@ body {
 }
 
 .store__products {
+  margin: 1rem auto;
+}
+
+.store__products-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
-.store__products__product {
+.store__products-list__product {
   display: block;
   border-radius: 1rem;
   padding: 1rem;

@@ -21,7 +21,7 @@ export function Products() {
     }
 
     return (
-      <div className="store__products">
+      <div className="store__products-list">
         {data.products.map((product) => (
           <ProductCard
             key={product.ean}
