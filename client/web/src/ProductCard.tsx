@@ -8,7 +8,7 @@ type Props = {
 
 export function ProductCard(props: Props) {
   return (
-    <div>
+    <div className="store__product">
       <h3>{props.name}</h3>
       <p>{props.ean}</p>
       <p>{props.price} €</p>
