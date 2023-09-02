@@ -41,6 +41,7 @@ export function Orders() {
         data?.orders.map((order) => (
           <OrderSummary
             key={order.orderId}
+            orderId={order.orderId}
             timestamp={order.timestamp}
             totalSum={order.totalSum}
           />
@@ -56,6 +57,11 @@ function OrderSummary(props: Partial<Order>) {
       <h3>Order</h3>
       <p>Order time {props.timestamp}</p>
       <p>Total: {props.totalSum} €</p>
+      <Link
+        className="store__button"
+        to={`/orders/${props.orderId}`}>
+        View order
+      </Link>
     </div>
   );
 }
