@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 import { Orders } from "./Orders";
+import { Order } from "./Order";
 import { Store } from "./Store";
 
 const gqlClient = new ApolloClient({
@@ -25,8 +26,8 @@ const router = createBrowserRouter([
     element: <Orders />,
   },
   {
-    path: "orders/:id",
-    element: <Orders />,
+    path: "order/:orderId",
+    element: <Order />,
   },
 ]);
 
