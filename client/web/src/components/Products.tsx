@@ -4,11 +4,12 @@ import { ProductCard } from "./ProductCard";
 import { gql } from "../../../generated";
 
 const getProductsQuery = gql(`
-  query getProducts {
+  query getProductsWeb {
     products {
       ean
       name
       price
+      imageUrl
     }
   }
 `);
@@ -28,6 +29,7 @@ export function Products() {
             name={product.name}
             ean={product.ean}
             price={product.price}
+            imageUrl={product.imageUrl}
           />
         ))}
       </div>
