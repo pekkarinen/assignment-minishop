@@ -26,7 +26,11 @@ export function Orders() {
   return (
     <>
       <h1>My order history</h1>
-      <Link to="/">Back to shop</Link>
+      <Link
+        className="store__button"
+        to="/">
+        Back to shop
+      </Link>
       <h2>Orders</h2>
       {loading ? (
         <p>Loading orders...</p>
