@@ -20,7 +20,7 @@ const ordersQuery = gql(`
 
 export function Orders() {
   const { loading, data } = useQuery(ordersQuery, {
-    variables: { customerId: "user-1" },
+    variables: { customerId: "customer-1" },
   });
 
   return (
