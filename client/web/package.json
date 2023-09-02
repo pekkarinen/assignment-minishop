@@ -5,9 +5,11 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build"
+    "build": "parcel build",
+    "check": "tsc --noEmit"
   },
   "devDependencies": {
+    "@parcel/validator-typescript": "^2.9.3",
     "@types/react": "18.2.21",
     "parcel": "2.9.3",
     "process": "0.11.10"
