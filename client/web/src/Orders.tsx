@@ -32,7 +32,11 @@ export function Orders() {
         <p>Loading orders...</p>
       ) : (
         data?.orders.map((order) => (
-          <OrderSummary key={order.orderId} timestamp={order.timestamp} totalSum={order.totalSum} />
+          <OrderSummary
+            key={order.orderId}
+            timestamp={order.timestamp}
+            totalSum={order.totalSum}
+          />
         ))
       )}
     </>
