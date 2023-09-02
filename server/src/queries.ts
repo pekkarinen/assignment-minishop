@@ -8,8 +8,14 @@ function totalSum(products: OrderedProduct[]) {
 
 export const queries: QueryResolvers = {
   order: async (_parent, _args, _context) => {
-    const order = orders.find((order) => order.orderId === _args.orderId);
-    return { ...order, totalSum: totalSum(order.products) };
+    const order = orders.find(
+      (order) => order.orderId === _args.orderId && order.customerId === _args.customerId
+    );
+    if (order) {
+      return { ...order, totalSum: totalSum(order.products) };
+    } else {
+      return;
+    }
   },
   orders: async (_parent, _args, _context) => {
     return orders
