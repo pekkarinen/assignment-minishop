@@ -26,7 +26,8 @@ const router = createBrowserRouter([
 ]);
 
 const container = document.getElementById("app");
-const root = createRoot(container);
+
+const root = createRoot(container!);
 root.render(
   <ApolloProvider client={gqlClient}>
     <RouterProvider router={router} />
