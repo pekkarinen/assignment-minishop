@@ -17,16 +17,21 @@ body {
   background: white;
   padding: 1rem;
   min-width: 640px;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
 }
 
 .store__products {
   display: grid;
-  grid-auto-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
 .store__products__product {
   display: block;
   border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid #eee;
 }
 
 h1 {
