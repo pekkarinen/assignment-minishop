@@ -23,7 +23,12 @@ export function Store() {
     }
 
     return data.products.map((product) => (
-      <ProductCard key={product.ean} name={product.name} ean={product.ean} price={product.price} />
+      <ProductCard
+        key={product.ean}
+        name={product.name}
+        ean={product.ean}
+        price={product.price}
+      />
     ));
   };
 
