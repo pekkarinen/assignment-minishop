@@ -11,6 +11,7 @@ const gqlClient = new ApolloClient({
 
   cache: new InMemoryCache(),
 });
+
 loadDevMessages();
 loadErrorMessages();
 
