@@ -33,8 +33,8 @@ export function Order() {
       <h1>Order summary</h1>
       <Link
         className="store__button"
-        to="/">
-        Back to shop
+        to="/orders">
+        Back to My Orders
       </Link>
       {loading ? (
         <p>Loading orders...</p>
