@@ -48,6 +48,7 @@ export type Query = {
 
 
 export type QueryOrderArgs = {
+  customerId: Scalars['ID']['input'];
   orderId: Scalars['ID']['input'];
 };
 
@@ -175,7 +176,7 @@ export type ProductResolvers<ContextType = any, ParentType extends ResolversPare
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  order?: Resolver<ResolversTypes['Order'], ParentType, ContextType, RequireFields<QueryOrderArgs, 'orderId'>>;
+  order?: Resolver<ResolversTypes['Order'], ParentType, ContextType, RequireFields<QueryOrderArgs, 'customerId' | 'orderId'>>;
   orders?: Resolver<Array<ResolversTypes['Order']>, ParentType, ContextType, RequireFields<QueryOrdersArgs, 'customerId'>>;
   products?: Resolver<Array<ResolversTypes['Product']>, ParentType, ContextType>;
 };
