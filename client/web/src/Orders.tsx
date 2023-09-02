@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { gql } from "../../generated";
 import { Order } from "../../generated/graphql";
 import { useQuery } from "@apollo/client";
@@ -19,6 +19,9 @@ const ordersQuery = gql(`
   }`);
 
 export function Orders() {
+  // TODO implement
+  const { orderId } = useParams();
+
   const { loading, data } = useQuery(ordersQuery, {
     variables: { customerId: "customer-1" },
   });
