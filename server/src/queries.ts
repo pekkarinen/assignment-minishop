@@ -7,6 +7,10 @@ function totalSum(products: OrderedProduct[]) {
 }
 
 export const queries: QueryResolvers = {
+  order: async (_parent, _args, _context) => {
+    const order = orders.find((order) => order.orderId === _args.orderId);
+    return { ...order, totalSum: totalSum(order.products) };
+  },
   orders: async (_parent, _args, _context) => {
     return orders
       .filter((order) => order.customerId === _args.customerId)
