@@ -41,8 +41,14 @@ export type Product = {
 
 export type Query = {
   __typename?: 'Query';
+  order: Order;
   orders: Array<Order>;
   products: Array<Product>;
+};
+
+
+export type QueryOrderArgs = {
+  orderId: Scalars['ID']['input'];
 };
 
 
@@ -169,6 +175,7 @@ export type ProductResolvers<ContextType = any, ParentType extends ResolversPare
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  order?: Resolver<ResolversTypes['Order'], ParentType, ContextType, RequireFields<QueryOrderArgs, 'orderId'>>;
   orders?: Resolver<Array<ResolversTypes['Order']>, ParentType, ContextType, RequireFields<QueryOrdersArgs, 'customerId'>>;
   products?: Resolver<Array<ResolversTypes['Product']>, ParentType, ContextType>;
 };
