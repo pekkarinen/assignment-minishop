@@ -34,12 +34,12 @@ export function Products() {
     );
   };
 
-  return(
-      <section className="store__products">
-        <header className="store__products__header">
-          <h2>Available products</h2>
-        </header>
-        {loading ? <p>Loading products...</p> : displayData()}
-      </section>
-  )
+  return (
+    <section className="store__products">
+      <header className="store__products__header">
+        <h2>Available products</h2>
+      </header>
+      {loading ? <p>Loading products...</p> : displayData()}
+    </section>
+  );
 }
