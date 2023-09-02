@@ -38,6 +38,8 @@ body {
   border-radius: 1rem;
   padding: 1rem;
   border: 1px solid #eee;
+  display: flex;
+  flex-flow: column;
 }
 
 .store__products-list__product__image {
@@ -48,6 +50,21 @@ body {
   object-fit: contain;
   object-position: center center;
   margin-bottom: 1rem;
+}
+
+.store__button {
+  font-family: sans-serif;
+  border: none;
+  background: green;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem auto;
+  font-size: 0.875rem;
+  align-self: flex-end;
+  font-weight: 700;
 }
 
 h1 {
