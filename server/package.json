@@ -9,7 +9,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@apollo/server": "4.9.2",
+    "@apollo/server": "^4.9.3",
     "graphql": "16.8.0"
   },
   "devDependencies": {
