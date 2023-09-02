@@ -24,6 +24,10 @@ const router = createBrowserRouter([
     path: "orders/",
     element: <Orders />,
   },
+  {
+    path: "orders/:id",
+    element: <Orders />,
+  },
 ]);
 
 const container = document.getElementById("app");
