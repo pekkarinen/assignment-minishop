@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { gql } from "../../generated";
-import { Order } from "../../generated/graphql";
+import { OrderSummary } from "./components/OrderSummary";
 import { useQuery } from "@apollo/client";
 
 const orderQuery = gql(`
@@ -49,15 +49,5 @@ export function Order() {
         <p>No such order</p>
       )}
     </>
-  );
-}
-
-function OrderSummary(props: Partial<Order>) {
-  return (
-    <div>
-      <h3>Order: {props.orderId}</h3>
-      <p>Order time {props.timestamp}</p>
-      <p>Total: {props.totalSum} €</p>
-    </div>
   );
 }
