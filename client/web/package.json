@@ -8,6 +8,7 @@
     "build": "parcel build"
   },
   "devDependencies": {
+    "@parcel/transformer-typescript-tsc": "^2.9.3",
     "@parcel/validator-typescript": "^2.9.3",
     "@types/react": "18.2.21",
     "parcel": "2.9.3",
