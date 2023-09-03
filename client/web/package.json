@@ -5,7 +5,8 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build"
+    "build": "parcel build",
+    "check": "tsc --noEmit"
   },
   "devDependencies": {
     "@parcel/transformer-typescript-tsc": "^2.9.3",
