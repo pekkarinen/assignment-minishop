@@ -6,7 +6,7 @@ type Product {
 }
 
 type OrderedProduct {
-  ean: String!
+  product: Product!
   amount: Int!
 }
 
@@ -20,6 +20,7 @@ type Order {
 
 type Query {
   products: [Product!]!
+  product(ean: ID!): Product
   orders(customerId: ID!): [Order!]!
-  order(orderId: ID!, customerId: ID!): Order!
+  order(orderId: ID!, customerId: ID!): Order
 }
