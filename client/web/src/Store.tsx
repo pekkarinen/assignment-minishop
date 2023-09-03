@@ -33,7 +33,7 @@ export function Store() {
   return (
     <>
       <Header text="Minishop" />
-      <Basket items={basket} />
+      {basket.length ? <Basket items={basket} /> : null}
       <Link
         className="store__button"
         to="/orders">
