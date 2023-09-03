@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { gql } from "../../generated";
-import { OrderSummary } from "./components/OrderSummary";
+import { OrderDetails } from "./components/OrderDetails";
 import { useQuery } from "@apollo/client";
 
 const orderQuery = gql(`
@@ -39,7 +39,7 @@ export function Order() {
       {loading ? (
         <p>Loading orders...</p>
       ) : data ? (
-        <OrderSummary
+        <OrderDetails
           key={data.order.orderId}
           orderId={data.order.orderId}
           timestamp={data.order.timestamp}
