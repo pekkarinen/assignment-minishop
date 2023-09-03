@@ -1,11 +1,10 @@
 import React from "react";
+import { Product } from "../../../generated/graphql";
 import { Button } from "./UI";
 
 type Props = {
-  name: string;
-  ean: string;
-  imageUrl: string;
-  price: number;
+  product: Product;
+  clickHandler: Function;
 };
 
 export function ProductCard(props: Props) {
@@ -13,13 +12,17 @@ export function ProductCard(props: Props) {
     <div className="store__products-list__product">
       <img
         className="store__products-list__product__image"
-        alt={props.name}
-        src={props.imageUrl}
+        alt={props.product.name}
+        src={props.product.imageUrl}
       />
-      <h3>{props.name}</h3>
-      <p className="small">{props.ean}</p>
-      <div className="store__products-list__product__price">{props.price} €</div>
-      <Button text="Add to order" />
+      <h3>{props.product.name}</h3>
+      <p className="small">{props.product.ean}</p>
+      <div className="store__products-list__product__price">{props.product.price} €</div>
+      <Button
+        clickHandler={props.clickHandler}
+        product={props.product}
+        text="Add to order"
+      />
     </div>
   );
 }

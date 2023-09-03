@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import { ProductCard } from "./ProductCard";
 import { gql } from "../../../generated";
 
-const getProductsQuery = gql(`
+const productsQuery = gql(`
   query getProductsWeb {
     products {
       ean
@@ -14,8 +14,13 @@ const getProductsQuery = gql(`
   }
 `);
 
-export function Products() {
-  const { loading, data } = useQuery(getProductsQuery);
+type ProductListProps = {
+  clickHandler: Function;
+};
+
+export function Products(props: ProductListProps) {
+  const { loading, data } = useQuery(productsQuery);
+
   const displayData = () => {
     if (!data) {
       return <p>No Products</p>;
@@ -26,10 +31,8 @@ export function Products() {
         {data.products.map((product) => (
           <ProductCard
             key={product.ean}
-            name={product.name}
-            ean={product.ean}
-            price={product.price}
-            imageUrl={product.imageUrl}
+            product={product}
+            clickHandler={props.clickHandler}
           />
         ))}
       </div>
