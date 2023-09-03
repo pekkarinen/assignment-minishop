@@ -34,6 +34,22 @@ export function Order() {
     },
   });
 
+  const displayData = () => {
+    if (!data || !data.order) {
+      return <p>No such order!</p>;
+    }
+
+    return (
+      <OrderDetails
+        key={data.order.orderId}
+        orderId={data.order.orderId}
+        products={data.order.products}
+        timestamp={data.order.timestamp}
+        totalSum={data.order.totalSum}
+      />
+    );
+  };
+
   return (
     <>
       <Header text="Order summary" />
@@ -42,19 +58,7 @@ export function Order() {
         to="/orders">
         Back to My Orders
       </Link>
-      {loading ? (
-        <p>Loading orders...</p>
-      ) : data?.order ? (
-        <OrderDetails
-          key={data.order.orderId}
-          orderId={data.order.orderId}
-          products={data.order.products}
-          timestamp={data.order.timestamp}
-          totalSum={data.order.totalSum}
-        />
-      ) : (
-        <p>No such order</p>
-      )}
+      {loading ? <p>Loading orders...</p> : displayData()}
     </>
   );
 }

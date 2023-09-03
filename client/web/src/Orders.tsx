@@ -24,6 +24,20 @@ export function Orders() {
     },
   });
 
+  const displayData = () => {
+    if (!data || !data.orders) {
+      return <p>No orders</p>;
+    }
+    return data.orders.map((order) => (
+      <OrderSummary
+        key={order.orderId}
+        orderId={order.orderId}
+        timestamp={order.timestamp}
+        totalSum={order.totalSum}
+      />
+    ));
+  };
+
   return (
     <>
       <Header text="My order history" />
@@ -33,18 +47,7 @@ export function Orders() {
         Back to shop
       </Link>
       <h2>Orders</h2>
-      {loading ? (
-        <p>Loading orders...</p>
-      ) : (
-        data?.orders.map((order) => (
-          <OrderSummary
-            key={order.orderId}
-            orderId={order.orderId}
-            timestamp={order.timestamp}
-            totalSum={order.totalSum}
-          />
-        ))
-      )}
+      {loading ? <p>Loading orders...</p> : displayData()}
     </>
   );
 }
