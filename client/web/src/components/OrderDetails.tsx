@@ -46,7 +46,7 @@ export function OrderDetails(props: Partial<Order>) {
               colSpan={2}>
               Total:
             </th>
-            <td>{props.totalSum}</td>
+            <td>{props.totalSum} €</td>
           </tr>
         </tfoot>
       </table>
