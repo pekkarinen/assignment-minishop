@@ -4,13 +4,34 @@
   box-sizing: border-box;
 }
 
+.store__header {
+  background-color: rgb(0, 170, 70);
+}
+
+h1 {
+  color: white;
+  font-family: sans-serif;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
 body {
   background: #eee;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  font-family: monospace;
+  font-family: sans-serif;
 }
 
 .store {
@@ -55,19 +76,47 @@ body {
 .store__button {
   font-family: sans-serif;
   border: none;
-  background: green;
+  background: rgb(0, 170, 70);
   color: white;
   text-decoration: none;
   display: inline-block;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
   margin: 0.5rem auto;
-  font-size: 0.875rem;
+  font-size: 0.725rem;
   align-self: flex-end;
   font-weight: 700;
 }
 
-h1 {
-  color: navy;
-  font-family: cursive;
+.store__order {
+  border: 1px solid #eee;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.store__order__header {
+  background: #efefef;
+  padding: 0.5rem;
+}
+
+.store__order__items {
+  border: 1px solid #eee;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.store__order__items th,
+.store__order__items td {
+  padding: 0.5rem;
+}
+
+.store__order__items th,
+.store__order__items td {
+  border: 1px solid #eee;
+}
+
+.store__order__items thead,
+.store__order__items tfoot {
+  background: #f9f9f9;
 }
