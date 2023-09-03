@@ -42,10 +42,7 @@ export function Order() {
     return (
       <OrderDetails
         key={data.order.orderId}
-        orderId={data.order.orderId}
-        products={data.order.products}
-        timestamp={data.order.timestamp}
-        totalSum={data.order.totalSum}
+        order={data.order}
       />
     );
   };

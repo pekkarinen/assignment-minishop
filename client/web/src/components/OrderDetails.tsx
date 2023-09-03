@@ -2,10 +2,8 @@ import React from "react";
 import { Order } from "../../../generated/graphql";
 import { parseDate } from "../utils/helpers";
 
-type OrderItemProps = {
-  amount: number;
-  name: string;
-  price: number;
+type OrderDetailsProps = {
+  order: Order;
 };
 
 const OrderItem = (props: OrderItemProps) => (
