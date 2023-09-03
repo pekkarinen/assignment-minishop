@@ -5,7 +5,9 @@
 }
 
 .store__header {
-  background-color: rgb(0, 170, 70);
+  background: rgb(0, 170, 70);
+  padding: 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 h1 {
@@ -23,6 +25,10 @@ h1 {
 
 .align-center {
   text-align: center;
+}
+
+.small {
+  font-size: 80%;
 }
 
 body {
@@ -73,6 +79,17 @@ body {
   margin-bottom: 1rem;
 }
 
+.store__products-list__product__price {
+  font-family: monospace;
+  color: darkblue;
+  font-weight: bold;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin-top: 0.5rem;
+  align-self: center;
+}
+
 .store__button {
   font-family: sans-serif;
   border: none;
@@ -82,9 +99,8 @@ body {
   display: inline-block;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  margin: 0.5rem auto;
+  margin: 1rem 0;
   font-size: 0.725rem;
-  align-self: flex-end;
   font-weight: 700;
 }
 
