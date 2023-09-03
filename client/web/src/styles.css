@@ -136,3 +136,13 @@ body {
 .store__order__items tfoot {
   background: #f9f9f9;
 }
+
+.store__basket {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: -1rem 0 2rem rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
