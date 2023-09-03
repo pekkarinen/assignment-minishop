@@ -11,8 +11,13 @@ const orderQuery = gql(`
       customerId
       timestamp
       products {
+        product {
+          name
+          price
+          ean
+          imageUrl
+        }
         amount
-        ean
       }
       totalSum
     }
@@ -42,6 +47,7 @@ export function Order() {
         <OrderDetails
           key={data.order.orderId}
           orderId={data.order.orderId}
+          products={data.order.products}
           timestamp={data.order.timestamp}
           totalSum={data.order.totalSum}
         />
