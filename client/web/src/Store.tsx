@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { OrderedProduct, Product } from "../../generated/graphql";
+import { Basket } from "./components/Basket";
 import { Products } from "./components/Products";
 import { Header } from "./components/Header";
 
@@ -32,6 +33,7 @@ export function Store() {
   return (
     <>
       <Header text="Minishop" />
+      <Basket items={basket} />
       <Link
         className="store__button"
         to="/orders">
