@@ -3,10 +3,11 @@ import { orders } from "./orderDatabase.js";
 import { products } from "./productDatabase.js";
 
 function totalSum(products: OrderedProduct[]) {
-  return products.reduce((acc, curr) => {
-    const price = Number((curr.amount * curr.product.price).toFixed(2));
+  const totalSum = products.reduce((acc, curr) => {
+    const price = curr.amount * curr.product.price;
     return acc + price;
   }, 0);
+  return Number(totalSum.toFixed(2));
 }
 
 export const queries: QueryResolvers = {
