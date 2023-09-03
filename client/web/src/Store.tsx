@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Products } from "./components/Products";
+import { Header } from "./components/Header";
 
 export function Store() {
   return (
     <>
-      <header className="store__header">
-        <h1>Minishop</h1>
-      </header>
+      <Header text="Minishop" />
       <Link
         className="store__button"
         to="/orders">

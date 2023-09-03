@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { OrderSummary } from "./components/OrderSummary";
+import { Header } from "./components/Header";
 import { gql } from "../../generated";
 
 const ordersQuery = gql(`
@@ -25,7 +26,7 @@ export function Orders() {
 
   return (
     <>
-      <h1>My order history</h1>
+      <Header text="My order history" />
       <Link
         className="store__button"
         to="/">

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { gql } from "../../generated";
 import { OrderDetails } from "./components/OrderDetails";
+import { Header } from "./components/Header";
 
 const orderQuery = gql(`
   query getOrder($orderId: ID!, $customerId: ID!) {
@@ -35,7 +36,7 @@ export function Order() {
 
   return (
     <>
-      <h1>Order summary</h1>
+      <Header text="Order summary" />
       <Link
         className="store__button"
         to="/orders">
