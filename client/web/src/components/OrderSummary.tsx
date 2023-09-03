@@ -11,7 +11,7 @@ export function OrderSummary(props: Partial<Order>) {
       <p>Total: {props.totalSum} €</p>
       <Link
         className="store__button"
-        to={`/order/${props.orderId}`}>
+        to={`/orders/${props.orderId}`}>
         View order
       </Link>
     </div>
