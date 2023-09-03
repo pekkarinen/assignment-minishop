@@ -28,7 +28,7 @@ export function Order() {
   const customerId = "customer-1";
   const { loading, data } = useQuery(orderQuery, {
     variables: {
-      orderId: orderId ?? "",
+      orderId: orderId!,
       customerId,
     },
   });
