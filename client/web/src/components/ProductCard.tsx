@@ -17,8 +17,8 @@ export function ProductCard(props: Props) {
         src={props.imageUrl}
       />
       <h3>{props.name}</h3>
-      <p>{props.ean}</p>
-      <p>{props.price} €</p>
+      <p className="small">{props.ean}</p>
+      <div className="store__products-list__product__price">{props.price} €</div>
       <Button text="Add to order" />
     </div>
   );
