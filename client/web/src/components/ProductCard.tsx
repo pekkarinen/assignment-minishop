@@ -15,14 +15,16 @@ export function ProductCard(props: Props) {
         alt={props.product.name}
         src={props.product.imageUrl}
       />
-      <h3>{props.product.name}</h3>
-      <p className="small">{props.product.ean}</p>
-      <div className="store__products-list__product__price">{props.product.price} €</div>
-      <Button
-        clickHandler={props.clickHandler}
-        product={props.product}
-        text="Add to order"
-      />
+      <div className="store__products-list__product__details">
+        <h3>{props.product.name}</h3>
+        <p className="small">{props.product.ean}</p>
+        <div className="store__products-list__product__price">{props.product.price} €</div>
+        <Button
+          clickHandler={props.clickHandler}
+          product={props.product}
+          text="Add to order"
+        />
+      </div>
     </div>
   );
 }
