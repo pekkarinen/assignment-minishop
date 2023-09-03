@@ -2,7 +2,7 @@ import React from "react";
 import { OrderedProduct } from "../../../generated/graphql";
 
 type BasketProps = {
-  items: [OrderedProduct];
+  items: OrderedProduct[];
 };
 
 export function Basket(props: BasketProps) {
