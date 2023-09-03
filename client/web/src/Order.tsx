@@ -43,7 +43,7 @@ export function Order() {
       </Link>
       {loading ? (
         <p>Loading orders...</p>
-      ) : data ? (
+      ) : data?.order ? (
         <OrderDetails
           key={data.order.orderId}
           orderId={data.order.orderId}
