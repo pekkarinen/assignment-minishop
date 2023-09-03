@@ -14,11 +14,7 @@ export const queries: QueryResolvers = {
     const order = orders.find(
       (order) => order.orderId === _args.orderId && order.customerId === _args.customerId
     );
-    if (order) {
-      return { ...order, totalSum: totalSum(order.products) };
-    } else {
-      return;
-    }
+    return order ? { ...order, totalSum: totalSum(order.products) } : null;
   },
   orders: async (_parent, _args, _context) => {
     return orders
@@ -27,6 +23,10 @@ export const queries: QueryResolvers = {
         ...order,
         totalSum: totalSum(order.products),
       }));
+  },
+  product: async (_parent, _args: { ean: string }, _context) => {
+    const product = products.find((product) => product.ean === _args.ean);
+    return product ?? null;
   },
   products: async (_parent, _args, _context) => {
     return products;
