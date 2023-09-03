@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 import { gql } from "../../generated";
 import { OrderDetails } from "./components/OrderDetails";
-import { useQuery } from "@apollo/client";
 
 const orderQuery = gql(`
   query getOrder($orderId: ID!, $customerId: ID!) {
