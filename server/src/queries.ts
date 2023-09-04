@@ -38,3 +38,22 @@ export const queries: QueryResolvers = {
     return products;
   },
 };
+export const mutations: MutationResolvers = {
+  createOrder: async (_parent, _args, _context) => {
+    const customerId = _args.customerId;
+    const timestamp = String(new Date());
+    const orderId = getFreeOrderId();
+    const order: Order = {
+      orderId,
+      timestamp,
+      customerId,
+      products: [],
+      totalSum: 0,
+    };
+    orders.push(order);
+    return {
+      success: true,
+      message: "Order created",
+      order,
+    };
+  },
