@@ -10,6 +10,11 @@ function totalSum(products: OrderedProduct[]) {
   return Number(totalSum.toFixed(2));
 }
 
+function getFreeOrderId() {
+  //todo: implement
+  return "order-4";
+}
+
 export const queries: QueryResolvers = {
   order: async (_parent, _args, _context) => {
     const order = orders.find(
