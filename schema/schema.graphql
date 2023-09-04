@@ -24,3 +24,14 @@ type Query {
   orders(customerId: ID!): [Order!]!
   order(orderId: ID!, customerId: ID!): Order
 }
+
+type Mutation {
+  createOrder(customerId: String!): CreateModifyOrderResponse
+  addProductToOrder(ean: String!, amount: Int!): CreateModifyOrderResponse
+}
+
+type CreateModifyOrderResponse {
+  success: Boolean!
+  message: String!
+  order: Order! 
+}
