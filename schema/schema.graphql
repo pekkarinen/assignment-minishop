@@ -27,7 +27,7 @@ type Query {
 
 type Mutation {
   createOrder(customerId: String!): CreateModifyOrderResponse
-  addProductToOrder(ean: String!, amount: Int!): CreateModifyOrderResponse
+  addProductToOrder(orderId: ID!, ean: ID!, amount: Int!): CreateModifyOrderResponse
 }
 
 type CreateModifyOrderResponse {
