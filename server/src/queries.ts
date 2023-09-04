@@ -1,4 +1,4 @@
-import { QueryResolvers, OrderedProduct } from "./generated/graphql.js";
+import { QueryResolvers, MutationResolvers, OrderedProduct, Order } from "./generated/graphql.js";
 import { orders } from "./orderDatabase.js";
 import { products } from "./productDatabase.js";
 
