@@ -37,5 +37,5 @@ input ProductInput {
 type CreateModifyOrderResponse {
   success: Boolean!
   message: String!
-  order: Order 
+  order: Order!
 }
