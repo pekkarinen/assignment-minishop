@@ -1,22 +1,11 @@
 import React, { useRef, useContext } from "react";
 import { OrderedProduct } from "../../../generated/graphql";
-import { gql, useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { OrderButton } from "./UI";
 import { ItemTable } from "./ItemTable";
-import { ordersQuery } from "../Orders";
+import { ordersQuery } from "../graphql/queries";
 import { UserContext } from "../UserContext";
-
-const createOrderMutation = gql`
-  mutation CreateOrderWithProducts($customerId: String!, $products: [ProductInput!]!) {
-    createOrderWithProducts(customerId: $customerId, products: $products) {
-      success
-      message
-      order {
-        orderId
-      }
-    }
-  }
-`;
+import { createOrderMutation } from "../graphql/queries";
 
 function totalSum(products: OrderedProduct[]) {
   const totalSum = products.reduce((acc, curr) => {

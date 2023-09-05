@@ -1,18 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { ProductCard } from "./ProductCard";
-import { gql } from "../../../generated";
-
-const productsQuery = gql(`
-  query getProductsWeb {
-    products {
-      ean
-      name
-      price
-      imageUrl
-    }
-  }
-`);
+import { productsQuery } from "../graphql/queries";
 
 type ProductListProps = {
   clickHandler: Function;

@@ -1,29 +1,10 @@
 import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { gql } from "../../generated";
 import { OrderDetails } from "./components/OrderDetails";
 import { Header } from "./components/Header";
 import { UserContext } from "./UserContext";
-
-const orderQuery = gql(`
-  query getOrder($orderId: ID!, $customerId: ID!) {
-    order(orderId: $orderId, customerId: $customerId) {
-      orderId
-      customerId
-      timestamp
-      products {
-        product {
-          name
-          price
-          ean
-          imageUrl
-        }
-        amount
-      }
-      totalSum
-    }
-  }`);
+import { orderQuery } from "./graphql/queries";
 
 export function Order() {
   const { orderId } = useParams();

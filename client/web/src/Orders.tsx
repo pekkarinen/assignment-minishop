@@ -3,18 +3,8 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { OrderSummary } from "./components/OrderSummary";
 import { Header } from "./components/Header";
-import { gql } from "../../generated";
 import { UserContext } from "./UserContext";
-
-export const ordersQuery = gql(`
-  query getOrders($customerId: ID!) {
-    orders(customerId: $customerId) {
-      orderId
-      customerId
-      timestamp
-      totalSum
-    }
-  }`);
+import { ordersQuery } from "./graphql/queries";
 
 export function Orders() {
   const customerId = useContext(UserContext);
