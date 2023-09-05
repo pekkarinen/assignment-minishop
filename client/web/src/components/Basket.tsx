@@ -22,12 +22,14 @@ type BasketProps = {
 
 export function Basket(props: BasketProps) {
   const customerId = useContext(UserContext);
-  // ordersQuery for refetchQueries
+  // need to reference ordersQuery for refetchQueries
   useQuery(ordersQuery, { variables: { customerId } });
+
   const [sendOrder, { data, loading, error }] = useMutation(createOrderMutation, {
     refetchQueries: ["getOrders"],
   });
 
+  // button indicates request status
   const buttonText = useRef("Send order");
   const buttonDisabled = useRef(false);
 
@@ -36,7 +38,9 @@ export function Basket(props: BasketProps) {
     buttonDisabled.current = true;
   }
 
-  if (error) buttonText.current = "Error sending order";
+  if (error) {
+    buttonText.current = "Error sending order";
+  }
 
   if (data) {
     buttonText.current = "Order sent";
