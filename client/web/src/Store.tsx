@@ -14,7 +14,7 @@ export function Store() {
 
   function addProduct(product: Product) {
     if (basket.some((item) => item.product.ean === product.ean)) {
-      // if item is already in basket, increment
+      // if item is already in basket, increment count
       setBasket(
         basket.map((order) => {
           if (order.product.ean === product.ean) {
