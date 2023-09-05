@@ -31,10 +31,12 @@ type BasketProps = {
 };
 
 export function Basket(props: BasketProps) {
-  const [sendOrder, { data, loading, error }] = useMutation(createOrderMutation);
   const customerId = "customer-1";
   // ordersQuery for refetchQueries
   useQuery(ordersQuery, { variables: { customerId } });
+  const [sendOrder, { data, loading, error }] = useMutation(createOrderMutation, {
+    refetchQueries: ["getOrders"],
+  });
 
   if (loading) return "sending order...";
   if (error) return `Oh no! ${error.message}`;
