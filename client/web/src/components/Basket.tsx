@@ -55,33 +55,26 @@ export function Basket(props: BasketProps) {
 
   return (
     <div className="store__basket">
-      {data.success ? (
-        <>"order sent"</>
-      ) : (
-        <>
-          <ItemTable
-            products={props.items}
-            totalSum={totalSum(props.items)}
-          />
-
-          <OrderButton
-            clickHandler={() => {
-              const productInputs = props.items.map((item) => ({
-                ean: item.product.ean,
-                amount: item.amount,
-              }));
-              console.log(productInputs);
-              sendOrder({
-                variables: {
-                  customerId: "customer-1",
-                  products: productInputs,
-                },
-              });
-            }}
-            text="Send order"
-          />
-        </>
-      )}
+      <ItemTable
+        products={props.items}
+        totalSum={totalSum(props.items)}
+      />
+      <OrderButton
+        clickHandler={() => {
+          const productInputs = props.items.map((item) => ({
+            ean: item.product.ean,
+            amount: item.amount,
+          }));
+          sendOrder({
+            variables: {
+              customerId: "customer-1",
+              products: productInputs,
+            },
+          });
+        }}
+        disabled={buttonDisabled.current}
+        text={buttonText.current}
+      />
     </div>
   );
 }
