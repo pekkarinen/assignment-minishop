@@ -10,9 +10,9 @@ function totalSum(products: OrderedProduct[]) {
   return Number(totalSum.toFixed(2));
 }
 
-function getFreeOrderId() {
-  //todo: implement
-  return "order-4";
+function getNextOrderId() {
+  const lastOrderIdNumber = Number(orders[orders.length - 1].orderId.replace(/.*-/, ""));
+  return `order-${lastOrderIdNumber + 1}`;
 }
 
 export const queries: QueryResolvers = {
@@ -42,7 +42,7 @@ export const mutations: MutationResolvers = {
   createOrder: async (_parent, _args, _context) => {
     const customerId = _args.customerId;
     const timestamp = String(new Date());
-    const orderId = getFreeOrderId();
+    const orderId = getNextOrderId();
     const order: Order = {
       orderId,
       timestamp,
