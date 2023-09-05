@@ -9,6 +9,10 @@ export function Store() {
   const [user, setUser] = useState("customer-1");
   const [basket, setBasket] = useState<Array<OrderedProduct>>([]);
 
+  function emptyBasket() {
+    setTimeout(() => setBasket([]), 1000);
+  }
+
   function addProduct(product: Product) {
     if (basket.some((item) => item.product.ean === product.ean)) {
       // if item is already in basket, increment
@@ -35,7 +39,12 @@ export function Store() {
   return (
     <>
       <Header text="Minishop" />
-      {basket.length ? <Basket items={basket} /> : null}
+      {basket.length ? (
+        <Basket
+          emptyBasket={emptyBasket}
+          items={basket}
+        />
+      ) : null}
       <Link
         className="store__button"
         to="/orders">

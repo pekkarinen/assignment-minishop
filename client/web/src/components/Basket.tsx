@@ -24,6 +24,7 @@ function totalSum(products: OrderedProduct[]) {
 
 type BasketProps = {
   items: OrderedProduct[];
+  emptyBasket: Function;
 };
 
 export function Basket(props: BasketProps) {
@@ -34,6 +35,7 @@ export function Basket(props: BasketProps) {
 
   if (loading) return "sending order...";
   if (error) return `Oh no! ${error.message}`;
+    props.emptyBasket();
 
   return (
     <div className="store__basket">
