@@ -11,6 +11,7 @@ export function Store() {
 
   function addProduct(product: Product) {
     if (basket.some((item) => item.product.ean === product.ean)) {
+      // if item is already in basket, increment
       setBasket(
         basket.map((order) => {
           if (order.product.ean === product.ean) {
@@ -22,6 +23,7 @@ export function Store() {
         })
       );
     } else {
+      // add product to basket
       const newOrder = {
         amount: 1,
         product,
