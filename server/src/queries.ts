@@ -57,3 +57,31 @@ export const mutations: MutationResolvers = {
       order,
     };
   },
+  createOrderWithProducts: async (_parent, _args, _context) => {
+    try {
+      const orderedProducts = _args.products.map((orderedProduct) => ({
+        amount: orderedProduct.amount,
+        product: products.find((dbProduct) => dbProduct.ean === orderedProduct.ean),
+      }));
+      const timestamp = String(new Date());
+
+      const order: Order = {
+        orderId: getNextOrderId(),
+        timestamp,
+        customerId: _args.customerId,
+        products: orderedProducts,
+        totalSum: totalSum(orderedProducts),
+      };
+      orders.push(order);
+      return {
+        success: true,
+        message: "Order created",
+        order,
+      };
+    } catch (e) {
+      return {
+        success: false,
+        message: `Oh no, ${e.message}`,
+      };
+    }
+  },
