@@ -61,7 +61,7 @@ export function Basket(props: BasketProps) {
           }));
           sendOrder({
             variables: {
-              customerId: "customer-1",
+              customerId,
               products: productInputs,
             },
           });
