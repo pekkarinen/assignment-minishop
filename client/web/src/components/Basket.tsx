@@ -38,11 +38,20 @@ export function Basket(props: BasketProps) {
     refetchQueries: ["getOrders"],
   });
 
-  if (loading) return "sending order...";
-  if (error) return `Oh no! ${error.message}`;
   const buttonText = useRef("Send order");
   const buttonDisabled = useRef(false);
+
+  if (loading) {
+    buttonText.current = "Sending order";
+    buttonDisabled.current = true;
+  }
+
+  if (error) buttonText.current = "Error sending order";
+
+  if (data) {
+    buttonText.current = "Order sent";
     props.emptyBasket();
+  }
 
   return (
     <div className="store__basket">
