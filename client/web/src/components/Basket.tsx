@@ -1,8 +1,9 @@
 import React from "react";
 import { OrderedProduct } from "../../../generated/graphql";
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { OrderButton } from "./UI";
 import { ItemTable } from "./ItemTable";
+import { ordersQuery } from "../Orders";
 
 const createOrderMutation = gql`
   mutation CreateOrderWithProducts($customerId: String!, $products: [ProductInput!]!) {
@@ -27,6 +28,9 @@ type BasketProps = {
 
 export function Basket(props: BasketProps) {
   const [sendOrder, { data, loading, error }] = useMutation(createOrderMutation);
+  const customerId = "customer-1";
+  // ordersQuery for refetchQueries
+  useQuery(ordersQuery, { variables: { customerId } });
 
   if (loading) return "sending order...";
   if (error) return `Oh no! ${error.message}`;

@@ -5,7 +5,7 @@ import { OrderSummary } from "./components/OrderSummary";
 import { Header } from "./components/Header";
 import { gql } from "../../generated";
 
-const ordersQuery = gql(`
+export const ordersQuery = gql(`
   query getOrders($customerId: ID!) {
     orders(customerId: $customerId) {
       orderId
