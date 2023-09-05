@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { OrderedProduct } from "../../../generated/graphql";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { OrderButton } from "./UI";
@@ -35,6 +35,8 @@ export function Basket(props: BasketProps) {
 
   if (loading) return "sending order...";
   if (error) return `Oh no! ${error.message}`;
+  const buttonText = useRef("Send order");
+  const buttonDisabled = useRef(false);
     props.emptyBasket();
 
   return (
