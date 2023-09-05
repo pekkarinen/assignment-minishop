@@ -1,6 +1,6 @@
 import React from "react";
 import { Product } from "../../../generated/graphql";
-import { Button } from "./UI";
+import { AddProductToOrderButton } from "./UI";
 
 type Props = {
   product: Product;
@@ -19,10 +19,10 @@ export function ProductCard(props: Props) {
         <h3>{props.product.name}</h3>
         <p className="small">{props.product.ean}</p>
         <div className="store__products-list__product__price">{props.product.price} €</div>
-        <Button
-          clickHandler={props.clickHandler}
-          product={props.product}
+        <AddProductToOrderButton
           text="Add to order"
+          product={props.product}
+          clickHandler={props.clickHandler}
         />
       </div>
     </div>
