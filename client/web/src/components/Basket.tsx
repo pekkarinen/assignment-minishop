@@ -10,6 +10,9 @@ const createOrderMutation = gql`
     createOrderWithProducts(customerId: $customerId, products: $products) {
       success
       message
+      order {
+        orderId
+      }
     }
   }
 `;
