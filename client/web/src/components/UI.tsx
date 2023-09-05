@@ -4,6 +4,7 @@ import { Product } from "../../../generated/graphql";
 type ButtonProps = {
   text: string;
   clickHandler: Function;
+  disabled?: boolean;
 };
 
 type AddProductToOrderButtonProps = ButtonProps & {
@@ -26,7 +27,8 @@ export function OrderButton(props: OrderButtonProps) {
   return (
     <button
       onClick={() => props.clickHandler()}
-      className="store__button">
+      className="store__button"
+      disabled={props.disabled}>
       {props.text}
     </button>
   );
