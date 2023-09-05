@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { gql } from "../../generated";
 import { OrderDetails } from "./components/OrderDetails";
 import { Header } from "./components/Header";
+import { UserContext } from "./UserContext";
 
 const orderQuery = gql(`
   query getOrder($orderId: ID!, $customerId: ID!) {
@@ -26,7 +27,7 @@ const orderQuery = gql(`
 
 export function Order() {
   const { orderId } = useParams();
-  const customerId = "customer-1";
+  const customerId = useContext(UserContext);
   const { loading, data } = useQuery(orderQuery, {
     variables: {
       orderId: orderId!,

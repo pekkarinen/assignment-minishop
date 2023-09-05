@@ -6,6 +6,7 @@ import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 import { Orders } from "./Orders";
 import { Order } from "./Order";
 import { Store } from "./Store";
+import { UserContext } from "./UserContext";
 
 const gqlClient = new ApolloClient({
   uri: "http://localhost:4000",
@@ -36,6 +37,8 @@ const container = document.getElementById("app");
 const root = createRoot(container!);
 root.render(
   <ApolloProvider client={gqlClient}>
-    <RouterProvider router={router} />
+    <UserContext.Provider value="customer-1">
+      <RouterProvider router={router} />
+    </UserContext.Provider>
   </ApolloProvider>
 );

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { OrderSummary } from "./components/OrderSummary";
 import { Header } from "./components/Header";
 import { gql } from "../../generated";
+import { UserContext } from "./UserContext";
 
 export const ordersQuery = gql(`
   query getOrders($customerId: ID!) {
@@ -16,8 +17,8 @@ export const ordersQuery = gql(`
   }`);
 
 export function Orders() {
-  const customerId = "customer-1";
-
+  const customerId = useContext(UserContext);
+  console.log(customerId);
   const { loading, data } = useQuery(ordersQuery, {
     variables: {
       customerId,

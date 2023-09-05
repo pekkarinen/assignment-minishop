@@ -6,7 +6,6 @@ import { Products } from "./components/Products";
 import { Header } from "./components/Header";
 
 export function Store() {
-  const [user, setUser] = useState("customer-1");
   const [basket, setBasket] = useState<Array<OrderedProduct>>([]);
 
   function emptyBasket() {
