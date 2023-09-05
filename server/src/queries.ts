@@ -38,25 +38,8 @@ export const queries: QueryResolvers = {
     return products;
   },
 };
+
 export const mutations: MutationResolvers = {
-  createOrder: async (_parent, _args, _context) => {
-    const customerId = _args.customerId;
-    const timestamp = String(new Date());
-    const orderId = getNextOrderId();
-    const order: Order = {
-      orderId,
-      timestamp,
-      customerId,
-      products: [],
-      totalSum: 0,
-    };
-    orders.push(order);
-    return {
-      success: true,
-      message: "Order created",
-      order,
-    };
-  },
   createOrderWithProducts: async (_parent, _args, _context) => {
     try {
       const orderedProducts = _args.products.map((orderedProduct) => ({
@@ -85,3 +68,4 @@ export const mutations: MutationResolvers = {
       };
     }
   },
+};
