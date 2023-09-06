@@ -38,18 +38,18 @@ export function Store() {
   return (
     <>
       <Header text="Minishop" />
-      {basket.length ? (
-        <Basket
-          emptyBasket={emptyBasket}
-          items={basket}
-        />
-      ) : null}
       <Link
         className="store__button"
         to="/orders">
         My orders
       </Link>
       <Products clickHandler={addProduct} />
+      {basket.length ? (
+        <Basket
+          emptyBasket={emptyBasket}
+          items={basket}
+        />
+      ) : null}
     </>
   );
 }
