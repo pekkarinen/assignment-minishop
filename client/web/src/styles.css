@@ -115,7 +115,7 @@ body {
   display: inline-block;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  margin: 1rem 0;
+  margin: 1rem 0.2rem;
   font-size: 0.725rem;
   font-weight: 700;
 }
@@ -135,7 +135,7 @@ body {
 .store__order__items {
   border: 1px solid #eee;
   border-collapse: collapse;
-  margin: 1rem 0;
+  width: 100%;
 }
 
 .store__order__items th,
@@ -165,6 +165,10 @@ body {
   font-size: 0.75rem;
   border: 3px solid #00aa46;
   border-radius: 0.5rem;
+}
+
+.store__basket .store__button {
+  width: 100%;
 }
 
 @media (max-width: 978px) {
