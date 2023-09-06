@@ -10,11 +10,12 @@ type Props = {
 export function ProductCard(props: Props) {
   return (
     <div className="store__products-list__product">
-      <img
-        className="store__products-list__product__image"
-        alt={props.product.name}
-        src={props.product.imageUrl}
-      />
+      <figure className="store__products-list__product__image">
+        <img
+          alt={props.product.name}
+          src={props.product.imageUrl}
+        />
+      </figure>
       <div className="store__products-list__product__details">
         <h3>{props.product.name}</h3>
         <p className="small">{props.product.ean}</p>
