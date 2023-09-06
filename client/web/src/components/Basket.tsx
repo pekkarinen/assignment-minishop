@@ -1,7 +1,8 @@
 import React, { useRef, useContext } from "react";
+import { Navigate } from "react-router-dom";
 import { OrderedProduct } from "../../../generated/graphql";
 import { useMutation, useQuery } from "@apollo/client";
-import { OrderButton } from "./UI";
+import { EmptyBasketButton, OrderButton } from "./UI";
 import { ItemTable } from "./ItemTable";
 import { ordersQuery } from "../graphql/queries";
 import { UserContext } from "../UserContext";
@@ -42,9 +43,8 @@ export function Basket(props: BasketProps) {
     buttonText.current = "Error sending order";
   }
 
-  if (data) {
+  if (data?.createOrderWithProducts?.success) {
     buttonText.current = "Order sent";
-    props.emptyBasket();
   }
 
   return (
@@ -53,22 +53,35 @@ export function Basket(props: BasketProps) {
         products={props.items}
         totalSum={totalSum(props.items)}
       />
-      <OrderButton
-        clickHandler={() => {
-          const productInputs = props.items.map((item) => ({
-            ean: item.product.ean,
-            amount: item.amount,
-          }));
-          sendOrder({
-            variables: {
-              customerId,
-              products: productInputs,
-            },
-          });
-        }}
-        disabled={buttonDisabled.current}
-        text={buttonText.current}
-      />
+      {data?.createOrderWithProducts?.order ? (
+        <Navigate
+          to={`/orders/${data.createOrderWithProducts.order.orderId}`}
+          replace={true}
+        />
+      ) : (
+        <>
+          <OrderButton
+            clickHandler={() => {
+              const productInputs = props.items.map((item) => ({
+                ean: item.product.ean,
+                amount: item.amount,
+              }));
+              sendOrder({
+                variables: {
+                  customerId,
+                  products: productInputs,
+                },
+              });
+            }}
+            disabled={buttonDisabled.current}
+            text={buttonText.current}
+          />
+          <EmptyBasketButton
+            clickHandler={props.emptyBasket}
+            text="Empty basket"
+          />
+        </>
+      )}
     </div>
   );
 }

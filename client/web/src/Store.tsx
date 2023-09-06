@@ -9,7 +9,7 @@ export function Store() {
   const [basket, setBasket] = useState<Array<OrderedProduct>>([]);
 
   function emptyBasket() {
-    setTimeout(() => setBasket([]), 1000);
+    setBasket([]);
   }
 
   function addProduct(product: Product) {
