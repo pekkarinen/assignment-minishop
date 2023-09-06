@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { OrderedProduct } from "../../../generated/graphql";
 import { useMutation, useQuery } from "@apollo/client";
 import { OrderButton } from "./UI";
@@ -18,7 +18,6 @@ function totalSum(products: OrderedProduct[]) {
 
 type BasketProps = {
   items: OrderedProduct[];
-  emptyBasket: Function;
 };
 
 export function Basket(props: BasketProps) {
@@ -45,7 +44,6 @@ export function Basket(props: BasketProps) {
 
   if (data?.createOrderWithProducts?.success) {
     buttonText.current = "Order sent";
-    props.emptyBasket();
   }
 
   return (
@@ -55,11 +53,10 @@ export function Basket(props: BasketProps) {
         totalSum={totalSum(props.items)}
       />
       {data?.createOrderWithProducts?.order ? (
-        <Link
-          className="store__button"
-          to={`/orders/${data.createOrderWithProducts.order.orderId}`}>
-          Order sent! View order
-        </Link>
+        <Navigate
+          to={`/orders/${data.createOrderWithProducts.order.orderId}`}
+          replace={true}
+        />
       ) : (
         <OrderButton
           clickHandler={() => {
