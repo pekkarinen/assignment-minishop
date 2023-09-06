@@ -8,10 +8,6 @@ import { Header } from "./components/Header";
 export function Store() {
   const [basket, setBasket] = useState<Array<OrderedProduct>>([]);
 
-  function emptyBasket() {
-    setTimeout(() => setBasket([]), 10000);
-  }
-
   function addProduct(product: Product) {
     if (basket.some((item) => item.product.ean === product.ean)) {
       // if item is already in basket, increment count
@@ -44,12 +40,7 @@ export function Store() {
         My orders
       </Link>
       <Products clickHandler={addProduct} />
-      {basket.length ? (
-        <Basket
-          emptyBasket={emptyBasket}
-          items={basket}
-        />
-      ) : null}
+      {basket.length ? <Basket items={basket} /> : null}
     </>
   );
 }
