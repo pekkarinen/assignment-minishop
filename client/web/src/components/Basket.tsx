@@ -2,7 +2,7 @@ import React, { useRef, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { OrderedProduct } from "../../../generated/graphql";
 import { useMutation, useQuery } from "@apollo/client";
-import { OrderButton } from "./UI";
+import { EmptyBasketButton, OrderButton } from "./UI";
 import { ItemTable } from "./ItemTable";
 import { ordersQuery } from "../graphql/queries";
 import { UserContext } from "../UserContext";
@@ -59,22 +59,28 @@ export function Basket(props: BasketProps) {
           replace={true}
         />
       ) : (
-        <OrderButton
-          clickHandler={() => {
-            const productInputs = props.items.map((item) => ({
-              ean: item.product.ean,
-              amount: item.amount,
-            }));
-            sendOrder({
-              variables: {
-                customerId,
-                products: productInputs,
-              },
-            });
-          }}
-          disabled={buttonDisabled.current}
-          text={buttonText.current}
-        />
+        <>
+          <OrderButton
+            clickHandler={() => {
+              const productInputs = props.items.map((item) => ({
+                ean: item.product.ean,
+                amount: item.amount,
+              }));
+              sendOrder({
+                variables: {
+                  customerId,
+                  products: productInputs,
+                },
+              });
+            }}
+            disabled={buttonDisabled.current}
+            text={buttonText.current}
+          />
+          <EmptyBasketButton
+            clickHandler={props.emptyBasket}
+            text="Empty basket"
+          />
+        </>
       )}
     </div>
   );

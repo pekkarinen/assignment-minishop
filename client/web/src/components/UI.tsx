@@ -23,6 +23,18 @@ export function AddProductToOrderButton(props: AddProductToOrderButtonProps) {
   );
 }
 
+export function EmptyBasketButton(props: OrderButtonProps) {
+  return (
+    <button
+      onClick={() => props.clickHandler()}
+      className="store__button"
+      disabled={props.disabled}
+      style={{ backgroundColor: "red" }}>
+      {props.text}
+    </button>
+  );
+}
+
 export function OrderButton(props: OrderButtonProps) {
   return (
     <button
