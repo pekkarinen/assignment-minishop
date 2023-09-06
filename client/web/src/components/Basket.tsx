@@ -18,6 +18,7 @@ function totalSum(products: OrderedProduct[]) {
 
 type BasketProps = {
   items: OrderedProduct[];
+  emptyBasket: Function;
 };
 
 export function Basket(props: BasketProps) {
