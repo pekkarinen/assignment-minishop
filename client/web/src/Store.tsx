@@ -1,43 +1,55 @@
-import { useQuery } from "@apollo/client";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { gql } from "../../generated";
-import { ProductCard } from "./ProductCard";
-
-const getProductsQuery = gql(`
-  query getProducts {
-    products {
-      ean
-      name
-      price
-    }
-  }
-`);
+import { OrderedProduct, Product } from "../../generated/graphql";
+import { Basket } from "./components/Basket";
+import { Products } from "./components/Products";
+import { Header } from "./components/Header";
 
 export function Store() {
-  const { loading, data } = useQuery(getProductsQuery);
+  const [basket, setBasket] = useState<Array<OrderedProduct>>([]);
 
-  const displayData = () => {
-    if (!data) {
-      return <p>No Products</p>;
+  function emptyBasket() {
+    setTimeout(() => setBasket([]), 1000);
+  }
+
+  function addProduct(product: Product) {
+    if (basket.some((item) => item.product.ean === product.ean)) {
+      // if item is already in basket, increment count
+      setBasket(
+        basket.map((order) => {
+          if (order.product.ean === product.ean) {
+            const newAmount = order.amount + 1;
+            return { ...order, amount: newAmount };
+          } else {
+            return order;
+          }
+        })
+      );
+    } else {
+      // add product to basket
+      const newOrder = {
+        amount: 1,
+        product,
+      };
+      setBasket([...basket, newOrder]);
     }
-
-    return data.products.map((product) => (
-      <ProductCard
-        key={product.ean}
-        name={product.name}
-        ean={product.ean}
-        price={product.price}
-      />
-    ));
-  };
+  }
 
   return (
     <>
-      <h1>Minishop</h1>
-      <Link to="/orders">My orders</Link>
-      <h2>Available products</h2>
-      {loading ? <p>Loading products...</p> : displayData()}
+      <Header text="Minishop" />
+      {basket.length ? (
+        <Basket
+          emptyBasket={emptyBasket}
+          items={basket}
+        />
+      ) : null}
+      <Link
+        className="store__button"
+        to="/orders">
+        My orders
+      </Link>
+      <Products clickHandler={addProduct} />
     </>
   );
 }

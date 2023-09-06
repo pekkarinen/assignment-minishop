@@ -1,54 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { gql } from "../../generated";
-import { Order } from "../../generated/graphql";
 import { useQuery } from "@apollo/client";
-
-const ordersQuery = gql(`
-  query getOrders($customerId: ID!) {
-    orders(customerId: $customerId) {
-      orderId
-      customerId
-      timestamp
-      products {
-        amount
-        ean
-      }
-      totalSum
-    }
-  }`);
+import { OrderSummary } from "./components/OrderSummary";
+import { Header } from "./components/Header";
+import { UserContext } from "./UserContext";
+import { ordersQuery } from "./graphql/queries";
 
 export function Orders() {
+  const customerId = useContext(UserContext);
+  console.log(customerId);
   const { loading, data } = useQuery(ordersQuery, {
-    variables: { customerId: "user-1" },
+    variables: {
+      customerId,
+    },
   });
+
+  const displayData = () => {
+    if (!data || !data.orders) {
+      return <p>No orders</p>;
+    }
+    return data.orders.map((order) => (
+      <OrderSummary
+        key={order.orderId}
+        orderId={order.orderId}
+        timestamp={order.timestamp}
+        totalSum={order.totalSum}
+      />
+    ));
+  };
 
   return (
     <>
-      <h1>My order history</h1>
-      <Link to="/">Back to shop</Link>
+      <Header text="My order history" />
+      <Link
+        className="store__button"
+        to="/">
+        Back to shop
+      </Link>
       <h2>Orders</h2>
-      {loading ? (
-        <p>Loading orders...</p>
-      ) : (
-        data?.orders.map((order) => (
-          <OrderSummary
-            key={order.orderId}
-            timestamp={order.timestamp}
-            totalSum={order.totalSum}
-          />
-        ))
-      )}
+      {loading ? <p>Loading orders...</p> : displayData()}
     </>
-  );
-}
-
-function OrderSummary(props: Partial<Order>) {
-  return (
-    <div>
-      <h3>Order</h3>
-      <p>Order time {props.timestamp}</p>
-      <p>Total: {props.totalSum} €</p>
-    </div>
   );
 }

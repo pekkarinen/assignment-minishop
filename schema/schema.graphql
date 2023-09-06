@@ -6,7 +6,7 @@ type Product {
 }
 
 type OrderedProduct {
-  ean: String!
+  product: Product!
   amount: Int!
 }
 
@@ -15,10 +15,27 @@ type Order {
   timestamp: String!
   customerId: String!
   products: [OrderedProduct!]!
-  totalSum: Int!
+  totalSum: Float!
 }
 
 type Query {
   products: [Product!]!
+  product(ean: ID!): Product
   orders(customerId: ID!): [Order!]!
+  order(orderId: ID!, customerId: ID!): Order
+}
+
+type Mutation {
+  createOrderWithProducts(customerId: String!, products:[ProductInput!]!): CreateModifyOrderResponse
+}
+
+input ProductInput {
+  ean: ID!,
+  amount: Int!
+}
+
+type CreateModifyOrderResponse {
+  success: Boolean!
+  message: String!
+  order: Order!
 }

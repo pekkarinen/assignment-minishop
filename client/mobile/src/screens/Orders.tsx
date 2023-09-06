@@ -12,10 +12,6 @@ const ordersQuery = gql(`
       orderId
       customerId
       timestamp
-      products {
-        amount
-        ean
-      }
       totalSum
     }
   }`);
